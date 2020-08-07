@@ -15,7 +15,9 @@ def dec_to_bin(number):
     :param number: a decimal value ot be converted into decimal
     :return: returns a string containing the binary translation of the decimal number
     :raises: no exceptions
-    :complexity: Best case O(n) Worst Case O(n)
+    :complexity: Best case O(n) Wo
+    
+    rst Case O(n)
     """
     bin = ""
     while number != 0:
