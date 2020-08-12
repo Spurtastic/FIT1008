@@ -1,2 +1,0 @@
-def random(self, item):
-    

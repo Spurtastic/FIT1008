@@ -1,0 +1,3 @@
+To be precise there were 9 lines of code, with a label for the main objective being printString
+a0 and v0 were used to call the string to the terminal in the MARs program 
+
