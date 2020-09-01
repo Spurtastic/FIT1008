@@ -1,0 +1,41 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+
+        {
+            "type": "dashmips",
+            "request": "launch",
+            "name": "Dashmips (Run Current File)",
+            "program": "${file}",
+            "registerFormat": "dec",
+            "cwd": "${workspaceFolder}",
+            "dashmipsCommand": "python -m dashmips debug",
+            "dashmipsArgs": [
+                "-i",
+                "localhost",
+                "-p",
+                "2390",
+                "-l"
+            ],
+            "stopOnEntry": false
+        },
+        {
+            "type": "dashmips",
+            "request": "attach",
+            "name": "Dashmips (Attach)",
+            "registerFormat": "dec",
+            "host": "localhost",
+            "port": 2390,
+            "stopOnEntry": false
+        }
+    ]
+}
