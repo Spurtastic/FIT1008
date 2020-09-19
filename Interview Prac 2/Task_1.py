@@ -1,24 +1,30 @@
+
 class Fighter():
     
     def __init__(self, life: int, experience: int) -> None:
-        self.life = 100
-        self.experience = 0
-        return life,
+        self.__life = 100
+        self.__experience = 0
+
 
     def is_alive(self) -> bool:
-        pass
+        # here the basic concept is to ensure that the fighter is alive
+
+        if self.__life==0:
+            return True 
+        return False
 
     def lose_life(self, lost_life: int) -> None:
-        pass
+        self.__life -= lost_life
+
 
     def get_life(self) -> int:
-        pass
+        return self.__life
 
     def gain_experience(self, gained_experience: int) -> None:
-        pass
+        self.__experience +=gained_experience
 
     def get_experience(self) -> int:
-        pass
+        return self.__experience
 
     def get_speed(self) -> int:
         pass
