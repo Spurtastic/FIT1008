@@ -7,8 +7,7 @@ class Fighter():
 
 
     def is_alive(self) -> bool:
-        # here the basic concept is to ensure that the fighter is alive
-
+        # here the basic concept is to ensure that the fighter is alive testing kraken
         if self.__life==0:
             return True 
         return False
