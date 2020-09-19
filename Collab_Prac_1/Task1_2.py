@@ -41,7 +41,6 @@ def sum_of_digits(x: int) -> int:
 
 
 
-
 def __create_list(length: int, lower: int, upper: int) -> List[int]:
     """ Creates a list of given length where elements are random 
     integers within interval [upper, lower]. 
