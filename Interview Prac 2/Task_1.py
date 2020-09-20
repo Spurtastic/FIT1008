@@ -6,8 +6,9 @@ class Fighter():
         self.__experience = 0
 
 
+
     def is_alive(self) -> bool:
-        # here the basic concept is to ensure that the fighter is alive testing kraken
+        # here the basic concept is to ensure that the fighter is alive
         if self.__life==0:
             return True 
         return False
@@ -26,19 +27,27 @@ class Fighter():
         return self.__experience
 
     def get_speed(self) -> int:
-        pass
+        return self.__speed
+        
+
 
     def get_cost(self) -> int:
-        pass
+        return self.__cost
 
     def get_attack_damage(self) -> int:
-        pass
+        return self.__damage
 
     def defend(self, damage: int) -> None:
-        pass
+        if damage>0:
+            self.life-=damage
+        
 
     def get_unit_type(self) -> str:
-        pass
+        return self.unit_type 
+        
 
     def __str__(self) -> str:
-        pass
+        val= self.unit_type +"'s life ="+str(self.life)+" experience = "+str(self.experience)+"\n" 
+        return val
+
+        
