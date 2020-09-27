@@ -29,8 +29,6 @@ class Fighter():
     def get_speed(self) -> int:
         return self.__speed
         
-
-
     def get_cost(self) -> int:
         return self.__cost
 
@@ -39,12 +37,16 @@ class Fighter():
 
     def defend(self, damage: int) -> None:
         if damage>0:
-            self.__life-=damage
+            self.life-=damage
         
 
     def get_unit_type(self) -> str:
-        
-        
+        return self.unit_type 
+
 
     def __str__(self) -> str:
-        pass
+        val= self.unit_type +"'s life ="+str(self.life)+" experience = "+str(self.experience)+"\n" 
+        return val
+
+
+
