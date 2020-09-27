@@ -39,11 +39,12 @@ class Fighter():
 
     def defend(self, damage: int) -> None:
         if damage>0:
-            pass
+            self.__life-=damage
         
 
     def get_unit_type(self) -> str:
-        pass
+        
+        
 
     def __str__(self) -> str:
         pass
