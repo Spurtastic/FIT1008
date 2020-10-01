@@ -1,6 +1,5 @@
 
 
-
 class Fighter():
     
     def __init__(self, life: int, experience: int) -> None:
@@ -12,9 +11,7 @@ class Fighter():
         if self.__life==0:
             return True 
         return False
-    
-    
-    #This will be made an abstract class
+
     def lose_life(self, lost_life: int) -> None:
         pass
         # self.__life -= lost_life
@@ -65,10 +62,18 @@ class Fighter():
 
 
 class Soldier(Fighter):
-
-    def __init__(self, life:int, experience: int) -> None:
+    def __init__(self, life: int, experience: int) -> None:
         self.__life = 3
-        self.__experience = 0   
+        self.__experience = 0
+        self.__unit_type = "Soldier"
+    def get_life(self)-> int:
+        return self.__life
+
+    def get_experience(self) -> int:
+        return self.__experience
+
+    def get_unit_type(self) -> str:
+        return self.__unit_type
 
 
     def defend(self, damage: int) -> None:
@@ -77,12 +82,15 @@ class Soldier(Fighter):
 
     def cost(self)-> int:
         return 1
+    
+    def __str__(self) -> str:
+        val= self.__unit_type +"'s life ="+str(self.life)+" experience = "+str(self.experience)+"\n" 
+        return val
 
     
-    
 
-
-
+t2 = Soldier()
+print(str(t2))
 
 
 "======================/====================================="
@@ -96,8 +104,13 @@ class Soldier(Fighter):
 # it costs 2 dollars
 
 class Archer(Fighter):
-    def __init__(self) -> None:
-        pass
+    def __init__(self, life:int, experience: int) -> None:
+        self.__life = 3
+        self.__experience = 0  
+
+    def defend(self, damage: int) -> None:
+        if damage>0:
+            self.life-=1
 
     def cost(self)-> int:
         return 2
@@ -111,8 +124,13 @@ class Archer(Fighter):
 # it costs 3 dollars
 
 class Cavalry(Fighter):
-    def __init__(self) -> None:
-        pass
+    def __init__(self, life:int, experience: int) -> None:
+        self.__life = 4
+        self.__experience = 0
+
+    def defend(self, damage: int) -> None:
+        if damage > self.experience//2:
+            self.life-=1
 
     def cost(self)-> int:
         return 3
