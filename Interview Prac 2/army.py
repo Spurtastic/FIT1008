@@ -5,22 +5,20 @@ class Fighter():
     def __init__(self, life: int, experience: int) -> None:
         self.life = life
         self.experience = experience
-
+    
     def is_alive(self) -> bool:
         # here the basic concept is to ensure that the fighter is alive
-        if self.__life==0:
+        if self.__life>0:
             return True 
         return False
 
     def lose_life(self, lost_life: int) -> None:
-        pass
-        # self.__life -= lost_life
+        self.__life -= lost_life
 
     
     #This will be made an abstract class
     def get_life(self) -> int:
-        pass
-        # return self.__life
+        return self.__life
 
     def gain_experience(self, gained_experience: int) -> None:
         self.__experience +=gained_experience
@@ -61,10 +59,14 @@ class Fighter():
 
 
 
-class Soldier(Fighter):
-    def __init__(self, life: int, experience: int) -> None:
-        self.__life = 3
-        self.__experience = 0
+class Soldier(Fighter(3, 0)):
+    unit_type = "Soldier"
+    cost = 1
+
+    # def __init__(self, life, experience) -> None:
+    #     self.life = life
+    #     self.experience = experience
+
     def get_life(self)-> int:
         return self.__life
 
@@ -75,21 +77,20 @@ class Soldier(Fighter):
         return self.__unit_type
 
 
+
     def defend(self, damage: int) -> None:
         if damage>self.experience:
             self.life-=1
-
-    def cost(self)-> int:
-        return 1
     
     def __str__(self) -> str:
-        val= self.__unit_type +"'s life ="+str(self.life)+" experience = "+str(self.experience)+"\n" 
+        val= self.unit_type +"'s life ="+str(self.life)+" experience = "+str(self.experience)+"\n" 
         return val
 
     
 
 t2 = Soldier()
 print(str(t2))
+
 
 
 "======================Archer====================================="
