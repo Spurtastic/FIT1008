@@ -65,7 +65,6 @@ class Soldier(Fighter):
     def __init__(self, life: int, experience: int) -> None:
         self.__life = 3
         self.__experience = 0
-        self.__unit_type = "Soldier"
     def get_life(self)-> int:
         return self.__life
 
