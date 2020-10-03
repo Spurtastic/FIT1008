@@ -1,13 +1,26 @@
+"""
+The below is created for the creation of an army elements. It has the Soldier, Archer and cavalry classes that inherit from a 
+a fighter class with the abstract method defend.
 
+
+"""
+
+__author__ = "Ashwin Sarith"
 
 class Fighter():
     
+
     def __init__(self, life: int, experience: int) -> None:
         self.life = life
         self.experience = experience
     
     def is_alive(self) -> bool:
-        # here the basic concept is to ensure that the fighter is alive
+        """  Checks if the fighter is alive via a boolean 
+        :pre: The fighter is alive
+        :post: The fighter will be hurt and
+        :complexity: Best and worst case is both O(1)
+
+        """
         if self.__life>0:
             return True 
         return False
