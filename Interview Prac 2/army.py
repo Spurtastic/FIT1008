@@ -61,15 +61,15 @@ class Fighter():
         return self.__experience
 
     def get_speed(self):
-        """returns fighters experience
+        """returns fighters speed
 
-        :return: the integer value for experience of the fighter"""
+        :return: the integer value for speed of the fighter"""
         return self.__speed
         
     def get_cost(self):
-        """returns fighters experience
+        """returns fighters cost
 
-        :return: the integer value for experience of the fighter"""
+        :return: the integer value for cost of the fighter"""
         return self.__cost
 
     def get_attack_damage(self):
