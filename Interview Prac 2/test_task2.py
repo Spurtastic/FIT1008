@@ -174,3 +174,4 @@ class TestTask2(unittest.TestCase):
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TestTask2)
     unittest.TextTestRunner(verbosity=0).run(suite)
+

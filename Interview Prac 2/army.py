@@ -7,6 +7,8 @@ a fighter class with the abstract method defend.
 
 __author__ = "Ashwin Sarith"
 
+
+# implemented classes and their methods below here
 class Fighter():
     
 
@@ -167,6 +169,7 @@ class Archer(Fighter):
     def __str__(self):
         val= self.unit_type +"'s life = "+str(self.life)+" and experience = "+str(self.experience) 
         return val
+
 "======================Cavalry====================================="
 # a Cavalry has 
 # 4 life
@@ -206,7 +209,10 @@ class Cavalry(Fighter):
         val= self.unit_type +"'s life = "+str(self.life)+" and experience = "+str(self.experience) 
         return val
 
+# Future implmentations
 
+class Army:
+    
 
       
 
