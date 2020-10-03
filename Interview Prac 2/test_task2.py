@@ -41,7 +41,8 @@ class TestTask2(unittest.TestCase):
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
-        ## put init tests here  
+        ## put init tests here 
+        "=================Soldier's Life===============" 
         try:
             self.assertEqual(t1.life,2, msg = "Soldier can only have 3 starting life")
         except AssertionError as e:
@@ -49,6 +50,18 @@ class TestTask2(unittest.TestCase):
 
         try:
             self.assertEqual(t1.life,-1, msg = "Soldier can only have 3 starting life")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))  
+
+         
+        "=================Soldier's Experience===============" 
+        try:
+            self.assertEqual(t1.experience,-1, msg = "Soldier can only have 0 starting experience")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))   
+
+        try:
+            self.assertEqual(t1.experience,0, msg = "Soldier can only have 0 starting experience")
         except AssertionError as e:
             self.verificationErrors.append(str(e))       
         
@@ -63,13 +76,36 @@ class TestTask2(unittest.TestCase):
             self.verificationErrors.append(str(e))
 
         ## put init tests here
+        "=================Archer's Life===============" 
+
         try:
             self.assertEqual(t1.life,2, msg = "Archer can only have 3 starting life")
         except AssertionError as e:
             self.verificationErrors.append(str(e)) 
 
         try:
+            self.assertEqual(t1.life,3, msg = "Archer can only have 3 starting life")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e)) 
+
+        try:
             self.assertEqual(t1.life,-1, msg = "Archer can only have 3 starting life")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))   
+        "=================Archer's Experience=========" 
+        
+        try:
+            self.assertEqual(t1.experience,-1, msg = "Archer can only have 0 starting experience")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))   
+        
+        try:
+            self.assertEqual(t1.experience,0, msg = "Archer can only have 0 starting experience")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))   
+        
+        try:
+            self.assertEqual(t1.experience,3, msg = "Archer can only have 0 starting experience")
         except AssertionError as e:
             self.verificationErrors.append(str(e))   
 

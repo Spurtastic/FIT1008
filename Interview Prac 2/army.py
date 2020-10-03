@@ -141,8 +141,8 @@ class Soldier(Fighter):
 # it costs 2 dollars
 
 class Archer(Fighter):
-    life = 0
-    experience = 0
+    # life = 0
+    # experience = 0
     unit_type = "Archer"
     cost = 2
 
