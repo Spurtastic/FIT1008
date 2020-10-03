@@ -87,7 +87,7 @@ class Fighter():
         val= self.unit_type +"'s life ="+str(self.life)+" experience = "+str(self.experience)+"\n" 
         return val
 
-
+"======================Soldier====================================="
 
 # a soldier has {x}
 # 3 life        
@@ -108,13 +108,13 @@ class Soldier(Fighter):
 
 
     def get_life(self):
-        return self.__life
+        return self.life
 
     def get_experience(self):
-        return self.__experience
+        return self.experience
 
     def get_unit_type(self):
-        return self.__unit_type
+        return self.unit_type
 
 
     def defend(self, damage: int):
@@ -139,17 +139,35 @@ class Soldier(Fighter):
 # it costs 2 dollars
 
 class Archer(Fighter):
-    def __init__(self, life:int, experience: int) -> None:
-        self.__life = 3
-        self.__experience = 0  
+    life = 0
+    experience = 0
+    unit_type = "Archer"
+    cost = 2
 
-    def defend(self, damage: int) -> None:
+
+    def __init__(self):
+        self.experience = 0
+        self.life       = 3
+
+
+    def get_life(self):
+        return self.life
+
+    def get_experience(self):
+        return self.experience
+
+    def get_unit_type(self):
+        return self.unit_type
+
+
+    def defend(self, damage: int):
         if damage>0:
             self.life-=1
-
-    def cost(self)-> int:
-        return 2
-"======================/====================================="
+    
+    def __str__(self):
+        val= self.unit_type +"'s life = "+str(self.life)+" and experience = "+str(self.experience) 
+        return val
+"======================Cavalry====================================="
 # a Cavalry has 
 # 4 life
 # 0 XP
@@ -159,16 +177,34 @@ class Archer(Fighter):
 # it costs 3 dollars
 
 class Cavalry(Fighter):
-    def __init__(self, life:int, experience: int) -> None:
-        self.__life = 4
-        self.__experience = 0
+    life = 0
+    experience = 0
+    unit_type = "Cavalry"
+    cost = 3
 
-    def defend(self, damage: int) -> None:
-        if damage > self.experience//2:
+
+    def __init__(self):
+        self.experience = 0
+        self.life       = 4
+
+
+    def get_life(self):
+        return self.life
+
+    def get_experience(self):
+        return self.experience
+
+    def get_unit_type(self):
+        return self.unit_type
+
+
+    def defend(self, damage: int):
+        if damage>self.experience//2:
             self.life-=1
-
-    def cost(self)-> int:
-        return 3
+    
+    def __str__(self):
+        val= self.unit_type +"'s life = "+str(self.life)+" and experience = "+str(self.experience) 
+        return val
 
 
 
