@@ -11,38 +11,65 @@ class Fighter():
     
 
     def __init__(self, life: int, experience: int):
-        """ Initialise life and experience of the fighter in question
+        """ Initialise life and experience of the fighter in 
+        
+        :pre: life and experience must be >= 0 
+        :post: Values cannot be modified here
+        :return: None
         """
         self.life = life
         self.experience = experience
     
     def is_alive(self):
         """  Checks if the fighter is alive via a boolean 
-        :pre: The fighter is alive
-        :post: The fighter will be hurt and
+        :return: None
         :complexity: Best and worst case is both O(1)
-
         """
         if self.__life>0:
             return True 
         return False
 
     def lose_life(self, lost_life: int):
+        """Here health deduction is implemented, lost life will be a result of damage
+        
+        :param lost_life: life to be deducted from the life of the specific fighter
+        :return: None
+        """
         self.__life -= lost_life
 
-    def get_life(self):
-        return self.__life
-
+    
     def gain_experience(self, gained_experience: int):
+        """Unit experience increased  by the value gained_experience
+
+        :pre: gained_experience >= 0
+        :post: experience added and greater
+        :param gained_experience: The experience to be added to fighter's experience
+        :return: the integer value for lifge of the fighter"""
         self.__experience +=gained_experience
 
+    def get_life(self):
+        """returns the fighters life
+
+        :return: the integer value for life of the fighter"""
+        return self.__life
+
+
     def get_experience(self):
+        """returns fighters experience
+
+        :return: the integer value for experience of the fighter"""
         return self.__experience
 
     def get_speed(self):
+        """returns fighters experience
+
+        :return: the integer value for experience of the fighter"""
         return self.__speed
         
     def get_cost(self):
+        """returns fighters experience
+
+        :return: the integer value for experience of the fighter"""
         return self.__cost
 
     def get_attack_damage(self):
@@ -69,9 +96,6 @@ class Fighter():
 # 1+ XP damage 
 # if the damage recieved on this trooper is greater than the experience then the trooper will lose 1 life
 # it costs 1 dollar
-
-
-
 class Soldier(Fighter):
     life = 0
     experience = 0
@@ -79,8 +103,8 @@ class Soldier(Fighter):
     cost = 1
 
     def __init__(self):
-        self.experience= 0
-        self.life      = 3
+        self.experience = 0
+        self.life       = 3
 
 
     def get_life(self):
