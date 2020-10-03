@@ -59,13 +59,16 @@ class Fighter():
 
 
 
-class Soldier(Fighter(3, 0)):
+class Soldier(Fighter):
+    life = 0
+    experience = 0
     unit_type = "Soldier"
     cost = 1
 
-    # def __init__(self, life, experience) -> None:
-    #     self.life = life
-    #     self.experience = experience
+    def __init__(self) -> None:
+        self.experience= 0
+        self.life      = 3
+
 
     def get_life(self)-> int:
         return self.__life
@@ -77,19 +80,14 @@ class Soldier(Fighter(3, 0)):
         return self.__unit_type
 
 
-
     def defend(self, damage: int) -> None:
         if damage>self.experience:
             self.life-=1
     
     def __str__(self) -> str:
-        val= self.unit_type +"'s life ="+str(self.life)+" experience = "+str(self.experience)+"\n" 
+        val= self.unit_type +"'s life = "+str(self.life)+" and experience = "+str(self.experience) 
         return val
 
-    
-
-t2 = Soldier()
-print(str(t2))
 
 
 
