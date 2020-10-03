@@ -10,11 +10,13 @@ __author__ = "Ashwin Sarith"
 class Fighter():
     
 
-    def __init__(self, life: int, experience: int) -> None:
+    def __init__(self, life: int, experience: int):
+        """ Initialise life and experience of the fighter in question
+        """
         self.life = life
         self.experience = experience
     
-    def is_alive(self) -> bool:
+    def is_alive(self):
         """  Checks if the fighter is alive via a boolean 
         :pre: The fighter is alive
         :post: The fighter will be hurt and
@@ -25,38 +27,36 @@ class Fighter():
             return True 
         return False
 
-    def lose_life(self, lost_life: int) -> None:
+    def lose_life(self, lost_life: int):
         self.__life -= lost_life
 
-    
-    #This will be made an abstract class
-    def get_life(self) -> int:
+    def get_life(self):
         return self.__life
 
-    def gain_experience(self, gained_experience: int) -> None:
+    def gain_experience(self, gained_experience: int):
         self.__experience +=gained_experience
 
-    def get_experience(self) -> int:
+    def get_experience(self):
         return self.__experience
 
-    def get_speed(self) -> int:
+    def get_speed(self):
         return self.__speed
         
-    def get_cost(self) -> int:
+    def get_cost(self):
         return self.__cost
 
-    def get_attack_damage(self) -> int:
+    def get_attack_damage(self):
         return self.__damage
 
-    def defend(self, damage: int) -> None:
+    def defend(self, damage: int):
         pass
         
 
-    def get_unit_type(self) -> str:
+    def get_unit_type(self):
         return self.unit_type 
 
 
-    def __str__(self) -> str:
+    def __str__(self):
         val= self.unit_type +"'s life ="+str(self.life)+" experience = "+str(self.experience)+"\n" 
         return val
 
@@ -78,26 +78,26 @@ class Soldier(Fighter):
     unit_type = "Soldier"
     cost = 1
 
-    def __init__(self) -> None:
+    def __init__(self):
         self.experience= 0
         self.life      = 3
 
 
-    def get_life(self)-> int:
+    def get_life(self):
         return self.__life
 
-    def get_experience(self) -> int:
+    def get_experience(self):
         return self.__experience
 
-    def get_unit_type(self) -> str:
+    def get_unit_type(self):
         return self.__unit_type
 
 
-    def defend(self, damage: int) -> None:
+    def defend(self, damage: int):
         if damage>self.experience:
             self.life-=1
     
-    def __str__(self) -> str:
+    def __str__(self):
         val= self.unit_type +"'s life = "+str(self.life)+" and experience = "+str(self.experience) 
         return val
 
