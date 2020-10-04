@@ -10,7 +10,11 @@ __author__ = "Ashwin Sarith"
 
 # implemented classes and their methods below here
 class Fighter():
-    
+    life = 3
+    experience = 0
+
+    # This is done because archers and soldiers increase damage the same way
+    damage = 0
 
     def __init__(self, life: int, experience: int):
         """ Initialise life and experience of the fighter in 
@@ -19,15 +23,15 @@ class Fighter():
         :post: Values cannot be modified here
         :return: None
         """
-        self.life = life
-        self.experience = experience
+        self.life = 3
+        self.experience = 0
     
     def is_alive(self):
         """  Checks if the fighter is alive via a boolean 
         :return: None
         :complexity: Best and worst case is both O(1)
         """
-        if self.__life>0:
+        if self.life>0:
             return True 
         return False
 
@@ -37,7 +41,7 @@ class Fighter():
         :param lost_life: life to be deducted from the life of the specific fighter
         :return: None
         """
-        self.__life -= lost_life
+        self.life -= lost_life
 
     
     def gain_experience(self, gained_experience: int):
@@ -47,35 +51,36 @@ class Fighter():
         :post: experience added and greater
         :param gained_experience: The experience to be added to fighter's experience
         :return: the integer value for lifge of the fighter"""
-        self.__experience +=gained_experience
+        self.experience +=gained_experience
 
     def get_life(self):
         """returns the fighters life
 
         :return: the integer value for life of the fighter"""
-        return self.__life
+        return self.life
 
 
     def get_experience(self):
         """returns fighters experience
 
         :return: the integer value for experience of the fighter"""
-        return self.__experience
+        return self.experience
 
     def get_speed(self):
-        """returns fighters speed
+        """returns fighters speed but is an abstract method
 
-        :return: the integer value for speed of the fighter"""
-        return self.__speed
+        :return: None"""
+        pass
         
     def get_cost(self):
         """returns fighters cost
 
         :return: the integer value for cost of the fighter"""
-        return self.__cost
+        return self.cost
 
     def get_attack_damage(self):
-        return self.__damage
+        self.damage = 1 + self.experience
+        return self.damage
 
     def defend(self, damage: int):
         pass
@@ -86,7 +91,7 @@ class Fighter():
 
 
     def __str__(self):
-        val= self.unit_type +"'s life ="+str(self.life)+" experience = "+str(self.experience)+"\n" 
+        val= self.unit_type +"'s life = "+str(self.life)+" experience = "+str(self.experience)+"\n" 
         return val
 
 "======================Soldier====================================="
@@ -99,33 +104,22 @@ class Fighter():
 # if the damage recieved on this trooper is greater than the experience then the trooper will lose 1 life
 # it costs 1 dollar
 class Soldier(Fighter):
-    life = 0
-    experience = 0
     unit_type = "Soldier"
     cost = 1
-
     def __init__(self):
-        self.experience = 0
-        self.life       = 3
-
-
-    def get_life(self):
-        return self.life
-
-    def get_experience(self):
-        return self.experience
-
-    def get_unit_type(self):
-        return self.unit_type
-
+        self.life    
+        self.experience 
+    
+    def get_speed(self):
+        return 1 + self.experience
 
     def defend(self, damage: int):
         if damage>self.experience:
-            self.life-=1
+            self.lose_life()
+
+            
     
-    def __str__(self):
-        val= self.unit_type +"'s life = "+str(self.life)+" and experience = "+str(self.experience) 
-        return val
+
 
 
 
@@ -148,27 +142,17 @@ class Archer(Fighter):
 
 
     def __init__(self):
-        self.experience = 0
-        self.life       = 3
-
-
-    def get_life(self):
-        return self.life
-
-    def get_experience(self):
-        return self.experience
-
-    def get_unit_type(self):
-        return self.unit_type
-
+        self.experience 
+        self.life      
+    
+    def get_speed(self):
+        return 3
 
     def defend(self, damage: int):
         if damage>0:
-            self.life-=1
+            self.lose_life()
     
-    def __str__(self):
-        val= self.unit_type +"'s life = "+str(self.life)+" and experience = "+str(self.experience) 
-        return val
+
 
 "======================Cavalry====================================="
 # a Cavalry has 
@@ -180,39 +164,49 @@ class Archer(Fighter):
 # it costs 3 dollars
 
 class Cavalry(Fighter):
-    life = 0
-    experience = 0
     unit_type = "Cavalry"
     cost = 3
 
-
     def __init__(self):
-        self.experience = 0
+        self.experience
         self.life       = 4
 
+    def get_speed(self):
+        return 2
 
-    def get_life(self):
-        return self.life
-
-    def get_experience(self):
-        return self.experience
-
-    def get_unit_type(self):
-        return self.unit_type
-
+    def get_attack_damage(self):
+        return 2*self.experience + 1 
 
     def defend(self, damage: int):
         if damage>self.experience//2:
-            self.life-=1
-    
-    def __str__(self):
-        val= self.unit_type +"'s life = "+str(self.life)+" and experience = "+str(self.experience) 
-        return val
+            self.lose_life
+
 
 
 def main():
-    pass
+    #testing speed
 
+    s1 = Soldier()
+    print(s1.get_attack_damage())
+    s2 = Archer()
+    print(s2.get_attack_damage())
+    s3 = Cavalry()
+    print(s3.get_attack_damage())
+
+    s1 = Soldier()
+    print(s1.get_life())
+    s2 = Archer()
+    print(s2.get_life())
+    s3 = Cavalry()
+    print(s3.get_life())
+    
+    s1 = Soldier()
+    print(s1.get_experience())
+    s2 = Archer()
+    print(s2.get_experience())
+    s3 = Cavalry()
+    print(s3.get_experience())
+    
 
 if __name__ == "__main__":
     main()
