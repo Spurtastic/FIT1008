@@ -209,6 +209,16 @@ class Cavalry(Fighter):
         val= self.unit_type +"'s life = "+str(self.life)+" and experience = "+str(self.experience) 
         return val
 
+
+def main():
+    pass
+
+
+if __name__ == "__main__":
+    main()
+
+
+
 # Future implmentations
 
 # class Army:
