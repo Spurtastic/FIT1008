@@ -10,10 +10,9 @@ __author__ = "Ashwin Sarith"
 
 # implemented classes and their methods below here
 class Fighter():
+    # Initialised common values for the subclasses
     life = 3
     experience = 0
-
-    # This is done because archers and soldiers increase damage the same way
     damage = 0
 
     def __init__(self, life: int, experience: int):
@@ -23,8 +22,8 @@ class Fighter():
         :post: Values cannot be modified here
         :return: None
         """
-        self.life = 3
-        self.experience = 0
+        self.life = life
+        self.experience = experience
     
     def is_alive(self):
         """  Checks if the fighter is alive via a boolean 
@@ -96,13 +95,6 @@ class Fighter():
 
 "======================Soldier====================================="
 
-# a soldier has {x}
-# 3 life        
-# 0 XP
-# 1+ XP speed
-# 1+ XP damage 
-# if the damage recieved on this trooper is greater than the experience then the trooper will lose 1 life
-# it costs 1 dollar
 class Soldier(Fighter):
     unit_type = "Soldier"
     cost = 1
@@ -126,13 +118,7 @@ class Soldier(Fighter):
 
 "======================Archer====================================="
 
-# an Archer has 
-# 3 life
-# 0 XP
-# 3 speed
-# 1+ XP damage 
-#-1 life
-# it costs 2 dollars
+
 
 class Archer(Fighter):
     # life = 0
@@ -155,13 +141,6 @@ class Archer(Fighter):
 
 
 "======================Cavalry====================================="
-# a Cavalry has 
-# 4 life
-# 0 XP
-# 2 speed
-# 2*XP +1 damage 
-# if the damage recieved on this trooper is greater than experience//2 then the trooper will lose 1 life
-# it costs 3 dollars
 
 class Cavalry(Fighter):
     unit_type = "Cavalry"
@@ -186,26 +165,35 @@ class Cavalry(Fighter):
 def main():
     #testing speed
 
-    s1 = Soldier()
-    print(s1.get_attack_damage())
-    s2 = Archer()
-    print(s2.get_attack_damage())
-    s3 = Cavalry()
-    print(s3.get_attack_damage())
+    # s1 = Soldier()
+    # print(s1.get_attack_damage())
+    # s2 = Archer()
+    # print(s2.get_attack_damage())
+    # s3 = Cavalry()
+    # print(s3.get_attack_damage())
 
-    s1 = Soldier()
-    print(s1.get_life())
-    s2 = Archer()
-    print(s2.get_life())
-    s3 = Cavalry()
-    print(s3.get_life())
+    # s1 = Soldier()
+    # print(s1.get_life())
+    # s2 = Archer()
+    # print(s2.get_life())
+    # s3 = Cavalry()
+    # print(s3.get_life())
+    
+    # s1 = Soldier()
+    # print(s1.get_experience())
+    # s2 = Archer()
+    # print(s2.get_experience())
+    # s3 = Cavalry()
+    # print(s3.get_experience())
     
     s1 = Soldier()
-    print(s1.get_experience())
+    print(str(s1))
+    
     s2 = Archer()
-    print(s2.get_experience())
+    print(str(s2))
+
     s3 = Cavalry()
-    print(s3.get_experience())
+    print(str(s3))
     
 
 if __name__ == "__main__":

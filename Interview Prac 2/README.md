@@ -6,6 +6,8 @@
 # This is Task 2
 ![Question to ask Kabir](https://github.com/Spurtastic/FIT1008/blob/master/Interview%20Prac%202/Images/Assn-Task-2.PNG)
 
+## * what do they mean by test __init__ functions, do we test whether the experience and life is initialised, because those are within the init meth
+
 # This is Task 3
 ![Question to ask Kabir](https://github.com/Spurtastic/FIT1008/blob/master/Interview%20Prac%202/Images/Assn-Task-3.PNG)
 
