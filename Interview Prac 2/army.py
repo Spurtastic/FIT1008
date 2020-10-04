@@ -5,7 +5,7 @@ a fighter class with the abstract method defend.
 
 """
 
-__author__ = "Ashwin Sarith"
+__author__ = ""
 
 
 # implemented classes and their methods below here
