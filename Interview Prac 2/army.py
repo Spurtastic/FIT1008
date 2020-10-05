@@ -119,7 +119,7 @@ class Fighter(ABC):
         return val
         
 
-"======================Soldier====================================="
+"====================== Task 2 ====================================="
 
 class Soldier(Fighter):
     unit_type = "Soldier"
@@ -150,7 +150,7 @@ class Soldier(Fighter):
 
 
 
-"======================Archer====================================="
+
 
 
 
@@ -183,7 +183,7 @@ class Archer(Fighter):
 
 
 
-"======================Cavalry====================================="
+
 
 class Cavalry(Fighter):
     unit_type = "Cavalry"
@@ -211,7 +211,33 @@ class Cavalry(Fighter):
     def defend(self, damage: int):
         if damage>(self.experience)//2:
             self.life -=1
-            
+
+
+"====================== Task 3 ====================================="
+class Army(Soldier, Archer, Cavalry, ABC):
+
+    def __init__(self):
+        " first we initialise the names and the fighting force0"
+        self.name = None
+        self.force = None
+
+    def __correct_army_given(self,soldiers:int, archers:int, cavalry:int):
+        pass
+    
+    def __assign_army(self, name:str, sold: int, arch: int, cav:int, formation: int):
+        pass
+
+    def choose_army(self, name:str, sold:int, arch:int, cavalry:int, formation:int):
+        """
+        docstring
+        """
+        self.name = input("whats your Name?\n")
+        SAC= 
+        pass
+    def __str__(self) -> str:
+        pass
+
+
 
 # def main():
     #testing speed
@@ -256,7 +282,7 @@ class Cavalry(Fighter):
 
 # Future implmentations
 
-# class Army:
+
 
 
       
