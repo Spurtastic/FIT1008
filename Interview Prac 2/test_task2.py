@@ -109,16 +109,16 @@ class TestTask2(unittest.TestCase):
         except AssertionError as e:
             self.verificationErrors.append(str(e))   
 
-    # def test_cavalry(self):
-    #     t1 = Cavalry()
+    def test_cavalry(self):
+        t1 = Cavalry()
 
-    #     # Test if Cavalry properties correctly initialised
-    #     try:
-    #         self.assertEqual(str(t1), "Cavalry's life = 4 and experience = 0", msg = "Cavalry not created correctly")
-    #     except AssertionError as e:
-    #         self.verificationErrors.append(str(e))
+        # Test if Cavalry properties correctly initialised
+        try:
+            self.assertEqual(str(t1), "Cavalry's life = 4 and experience = 0", msg = "Cavalry not created correctly")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
 
-    #     ## put init tests here
+        ## put init tests here
 
     # def test_is_alive_lose_life(self):
     #     s = Soldier()
