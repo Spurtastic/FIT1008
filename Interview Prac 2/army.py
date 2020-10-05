@@ -222,6 +222,8 @@ class Army(Soldier, Archer, Cavalry, ABC):
         self.force = None
 
     def __correct_army_given(self,soldiers:int, archers:int, cavalry:int):
+        total_cost = soldiers + archers + cavalry
+         
         pass
     
     def __assign_army(self, name:str, sold: int, arch: int, cav:int, formation: int):
@@ -232,7 +234,24 @@ class Army(Soldier, Archer, Cavalry, ABC):
         docstring
         """
         self.name = input("whats your Name?\n")
-        SAC= 
+        x = 1
+        SAC = []
+        while x<4:
+            if x == 1:
+                SAC.append(int(input("Player "+self.name+" Number of Soldiers?")))
+                x+=1
+            elif x == 2:
+                SAC.append(int(input("Player "+self.name+" Number of Archers?")))
+                x+=1
+            elif x == 3:
+                SAC.append(int(input("Player "+self.name+" Number of Cavalry men?")))
+            else:
+                x+=1
+        
+        #
+
+
+        
         pass
     def __str__(self) -> str:
         pass
