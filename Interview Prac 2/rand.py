@@ -1,5 +1,5 @@
 x = 1
-SAC =[]
+S,A,C =[]
 while x<4:
             if x == 1:
                 SAC.append(int(input("Player"+ " Number of soldiers?")))
@@ -13,5 +13,5 @@ while x<4:
             else:
                 x+=1
 
-print(SAC)
+print(S)
             

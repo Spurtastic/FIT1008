@@ -51,3 +51,9 @@ class ArrayR(Generic[T]):
         :pre: index in between 0 and length - self.array[] checks it
         """
         self.array[index] = value
+    
+    def __str__(self) -> str:
+        string = ""
+        for i in range(self.length):
+            string += ("\n"+str(self.array[i])+"\n")
+        return string

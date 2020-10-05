@@ -10,7 +10,7 @@ __author__ = "Ashwin Sarith"
 
 # implemented classes and their methods below here
 from abc import ABC, abstractmethod
-
+from stack_adt import ArrayStack
 
 class Fighter(ABC):
     # Initialised common values for the subclasses
@@ -215,50 +215,95 @@ class Cavalry(Fighter):
 
 "====================== Task 3 ====================================="
 class Army(Soldier, Archer, Cavalry, ABC):
-
+    
     def __init__(self):
         " first we initialise the names and the fighting force0"
         self.name = None
         self.force = None
 
-    def __correct_army_given(self,soldiers:int, archers:int, cavalry:int):
-        total_cost = soldiers + archers + cavalry
+    def __correct_army_given(self, soldiers:int, archers:int, cavaliers:int):
+        total_cost = soldiers + archers + cavaliers
+
+        if soldiers >= 0 and archers >= 0 and cavaliers >=0 and total_cost <=30:
+            return True
+        else:
+            return False
          
-        pass
     
     def __assign_army(self, name:str, sold: int, arch: int, cav:int, formation: int):
-        pass
+        # NOTE: this is based on the assesment assumption that the formation would always be 0 for a stack and not 1 which is meant for a queue
+        # print("work god dammit")
+        if formation == 0:
+            stack_size = sold + arch + cav
+            force = ArrayStack(stack_size)
+            #Soldier
+            s = Soldier()
+            #Archer
+            a = Archer()
+            #Cavalry
+            c = Cavalry()
+            
+            
+            index = 0
+            while index != sold:
+                force.push(s.__str__())
+                index+=1  
+            
+            index = 0
+            while index != arch:
+                force.push(a.__str__())
+                index+=1
+            
+            index = 0       
+            while index != cav:
+                force.push(c.__str__())
+                index+=1
 
-    def choose_army(self, name:str, sold:int, arch:int, cavalry:int, formation:int):
+            self.force = force
+            print(self.force)
+            self.name = name
+
+
+    def choose_army(self, name:str, formation:int):
         """
         docstring
-        """
-        self.name = input("whats your Name?\n")
+        """ 
+        self.name = input("whats your Name?\n") # or it could just be name, it just depends on how its going to be used, will debate this later
+        # print(self.name)
         x = 1
         SAC = []
         while x<4:
             if x == 1:
-                SAC.append(int(input("Player "+self.name+" Number of Soldiers?")))
+                SAC.append(int(input("Player "+self.name+" Number of Soldiers? ")))
                 x+=1
             elif x == 2:
-                SAC.append(int(input("Player "+self.name+" Number of Archers?")))
+                SAC.append(int(input("Player "+self.name+" Number of Archers? ")))
                 x+=1
             elif x == 3:
-                SAC.append(int(input("Player "+self.name+" Number of Cavalry men?")))
+                SAC.append(int(input("Player "+self.name+" Number of Cavalry men? ")))
+                x+=1
             else:
                 x+=1
-        
-        #
+        Soldiers = SAC[0]
+        # print("\n"+str(Soldiers))
+        Archers = SAC[1]
+        Cavalries = SAC[2]
+        # print("work god dammit")
+        Truth = True
+        if self.__correct_army_given(self,Soldiers, Archers, Cavalries) is Truth:
+            # print("work god dammit")
+            self.__assign_army(self, name, Soldiers, Archers, Cavalries, formation)
+            # print(self.force)
 
-
-        
-        pass
+    
     def __str__(self) -> str:
-        pass
+        return str(self.force)
 
 
 
-# def main():
+def main():
+    pass
+    # Army.choose_army(Army, "Player 1", 0)
     #testing speed
 
     # s1 = Soldier()
@@ -292,14 +337,27 @@ class Army(Soldier, Archer, Cavalry, ABC):
 
     # s3 = Cavalry()
     # print(str(s3))
-    
+import sys
 
-# if __name__ == "__main__":
-#     main()
+class Test(ABC):
+    def test_function(self):
+        sys.stdin = open("tester.txt")
+        A1 = Army()
+        Army.choose_army(Army, "", 0)
+        
+
+        
+
+    def setup_method(self):
+        self.orig_stdin = sys.stdin
+
+    def teardown_method(self):
+        sys.stdin = self.orig_stdin
+
+if __name__ == "__main__":
+    Test.test_function(Army)
 
 
-
-# Future implmentations
 
 
 
