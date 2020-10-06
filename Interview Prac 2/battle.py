@@ -6,6 +6,10 @@ class Battle:
     def gladiatorial_combat(self, player_one: str, player_two: str):
         self.player_one = player_one
         self.player_two = player_two
+        army_player_player_1 = Army()
+        army_player_player_2 = Army()
+        
+
 
        
 

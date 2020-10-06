@@ -10,6 +10,7 @@ __author__ = "Ashwin Sarith"
 
 # implemented classes and their methods below here
 from abc import ABC, abstractmethod
+from queue_adt import CircularQueue, Queue
 from stack_adt import ArrayStack
 
 class Fighter(ABC):
@@ -258,9 +259,35 @@ class Army(Soldier, Archer, Cavalry, ABC):
             while index != cav:
                 force.push(c.__str__())
                 index+=1
-
             self.force = force
             self.name = name
+        elif formation == 1:
+            queue_size = sold +arch +cav
+            force = CircularQueue(queue_size)
+
+            s = Soldier()
+            a = Archer()
+            c = Cavalry()
+            
+            index = 0
+            while index != sold:
+                force.append(str(s))
+                index+=1
+            index = 0
+            while index != arch:
+                force.append(str(a))
+                index+=1
+            
+            index = 0
+            while index != cav:
+                force.append(str(c))
+                index+=1
+            self.force = force
+            self.name =  name
+            
+
+
+
 
 
     def choose_army(self, name:str, formation:int):
