@@ -260,7 +260,6 @@ class Army(Soldier, Archer, Cavalry, ABC):
                 index+=1
 
             self.force = force
-            print(self.force)
             self.name = name
 
 
@@ -342,12 +341,8 @@ import sys
 class Test(ABC):
     def test_function(self):
         sys.stdin = open("tester.txt")
-        A1 = Army()
         Army.choose_army(Army, "", 0)
         
-
-        
-
     def setup_method(self):
         self.orig_stdin = sys.stdin
 

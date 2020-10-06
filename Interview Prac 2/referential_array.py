@@ -55,5 +55,10 @@ class ArrayR(Generic[T]):
     def __str__(self) -> str:
         string = ""
         for i in range(self.length):
-            string += ("\n"+str(self.array[i])+"\n")
+            if i == 0:
+                string += (str(self.array[i])+",")
+            elif i < self.length:
+                string += (str(self.array[i])+",")
+            else:
+                string += (str(self.array[i]))
         return string
