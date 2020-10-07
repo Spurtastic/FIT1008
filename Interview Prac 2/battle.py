@@ -1,26 +1,21 @@
 
 "====================== task 4 ============================="
-from army import Army
+from army import*
 from abc import ABC, abstractmethod
 from stack_adt import ArrayStack
 class Battle():
     
     def gladiatorial_combat(self, player_one: str, player_two: str):
-
-
-        player_one_army = Army()
-        player_one_army.choose_army( "Player 1", 0)
-        player_one = player_one_army.name
-
-        player_two_army = Army()
-        player_two_army.choose_army("Player 2", 0)
-        player_two = player_two_army.name
-
         
         self.player_one = player_one
         self.player_two = player_two
 
-        self.__conduct_combat(self,player_one_army,player_two_army,0)
+        player_one_army = Army()
+        player_two_army = Army()
+        
+
+
+        self.__conduct_combat(player_one_army,player_two_army,0)
 
    
 
@@ -28,9 +23,8 @@ class Battle():
        
 
     def __conduct_combat(self, army1: Army, army2: Army, formation: int):
-
         if formation == 0:
-
+            
             # while the armies are not empty
             while not (army1.force.is_empty() & army2.force.is_empty()):      
                 u1 = army1.force.pop()
@@ -73,17 +67,27 @@ class Battle():
                 if army1.force.is_empty() or army2.force.is_empty():
                     if army1.force.is_empty():
                         ret = (f"Player {army1.name} won!")
-                        print(ret)
-                        break
+                        return 1
                     else:
                         ret = (f"Player {army2.name} won!")
                         print(ret)
-                        break
+                        return 2
                 elif army1.force.is_empty() and army2.force.is_empty():
-                    print("draw")
+                    return 0
                 
+def main():
+    t1 = Army()
+    t2 = Army()
+    battle = Battle()
+    formation = 0
 
-(Battle.gladiatorial_combat(Battle, "", ""))                      
+    # Test if combat is conducted correctly and returns appropriate result for empty p1 army and all Archer p2 army
+    # Assumes __assign_army is working correctly
+    print(t1._Army__assign_army("", 0, 0, 0, formation))
+    t2._Army__assign_army("", 0, 10, 0, formation)
 
+if __name__ == "__main__":
+
+    main()
                
  

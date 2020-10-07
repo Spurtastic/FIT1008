@@ -237,6 +237,8 @@ class Army(Soldier, Archer, Cavalry, ABC):
     def __assign_army(self, name:str, sold: int, arch: int, cav:int, formation: int):
         # NOTE: this is based on the assesment assumption that the formation would always be 0 for a stack and not 1 which is meant for a queue
         # print("work god dammit")
+              
+
         if formation == 0:
             stack_size = sold + arch + cav
             force = ArrayStack(stack_size)
@@ -246,7 +248,6 @@ class Army(Soldier, Archer, Cavalry, ABC):
             a = Archer()
             #Cavalry
             c = Cavalry()
-            
             
             index = 0
             while index != sold:
@@ -297,8 +298,7 @@ class Army(Soldier, Archer, Cavalry, ABC):
         """
         docstring
         """ 
-        self.name = input("whats your Name?\n") # or it could just be name, it just depends on how its going to be used, will debate this later
-        # print(self.name)
+        self.name = name # or it could just be name, it just depends on how its going to be used, will debate this later
         x = 1
         SAC = []
         while x<4:
@@ -314,10 +314,8 @@ class Army(Soldier, Archer, Cavalry, ABC):
             else:
                 x+=1
         Soldiers = SAC[0]
-        # print("\n"+str(Soldiers))
         Archers = SAC[1]
         Cavalries = SAC[2]
-        # print("work god dammit")
         
         if self.__correct_army_given(Soldiers, Archers, Cavalries) is True:
             # print("work god dammit")
