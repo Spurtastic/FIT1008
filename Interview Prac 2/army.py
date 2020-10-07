@@ -223,7 +223,12 @@ class Army(Soldier, Archer, Cavalry, ABC):
         self.force = None
 
     def __correct_army_given(self, soldiers:int, archers:int, cavaliers:int):
-        total_cost = soldiers + archers + cavaliers
+        s = Soldier()
+        a = Archer()
+        c = Cavalry()
+        
+        total_cost = (s.cost*soldiers) + (a.cost*archers) + (c.cost*cavaliers)
+
 
         if soldiers >= 0 and archers >= 0 and cavaliers >=0 and total_cost <=30:
             return True
@@ -284,7 +289,7 @@ class Army(Soldier, Archer, Cavalry, ABC):
                 index+=1
             self.force = force
             self.name =  name
-            
+
 
 
 
@@ -315,10 +320,10 @@ class Army(Soldier, Archer, Cavalry, ABC):
         Archers = SAC[1]
         Cavalries = SAC[2]
         # print("work god dammit")
-        Truth = True
-        if self.__correct_army_given(self,Soldiers, Archers, Cavalries) is Truth:
+        
+        if self.__correct_army_given(self,Soldiers, Archers, Cavalries) is True:
             # print("work god dammit")
-            self.__assign_army(self, name, Soldiers, Archers, Cavalries, formation)
+            self.__assign_army(self, self.name, Soldiers, Archers, Cavalries, formation)
             # print(self.force)
 
     
@@ -338,6 +343,8 @@ def main():
     # print(s2.get_attack_damage())
     # s3 = Cavalry()
     # print(s3.get_attack_damage())
+
+    # print(type(s3.cost))
 
     # s1 = Soldier()
     # print(s1.get_life())
@@ -363,21 +370,25 @@ def main():
 
     # s3 = Cavalry()
     # print(str(s3))
-import sys
+# import sys
 
-class Test(ABC):
-    def test_function(self):
-        sys.stdin = open("tester.txt")
-        Army.choose_army(Army, "", 0)
-        
-    def setup_method(self):
-        self.orig_stdin = sys.stdin
+# class Test(ABC):
+#     def test_function(self):
+#         sys.stdin = open("tester.txt")
+#         t1 = Army
+#         # Army.choose_army(Army, "", 0)
+#         t1.choose_army(t1,"t1",0)
+#         print(str(t1.name))
+#     def setup_method(self):
+#         self.orig_stdin = sys.stdin
 
-    def teardown_method(self):
-        sys.stdin = self.orig_stdin
+#     def teardown_method(self):
+#         sys.stdin = self.orig_stdin
 
-if __name__ == "__main__":
-    Test.test_function(Army)
+# if __name__ == "__main__":
+#     main()
+
+#     Test.test_function(Army)
 
 
 

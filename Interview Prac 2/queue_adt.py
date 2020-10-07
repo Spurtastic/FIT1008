@@ -98,6 +98,18 @@ class CircularQueue(Queue[T]):
         Queue.__init__(self)
         self.front = 0
         self.rear = 0
+    
+    def __str__(self) -> str:
+        string = ""
+        for i in range(self.length):
+            if i == 0:
+                string += (str(self.array[i]))
+            elif i < self.length:
+                string += (","+str(self.array[i]))
+            else:
+                string += (str(self.array[i]))
+        return string
+    
 
 
 class TestQueue(unittest.TestCase):
