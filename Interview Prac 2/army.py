@@ -10,14 +10,10 @@ __author__ = "Ashwin Sarith"
 
 # implemented classes and their methods below here
 from abc import ABC, abstractmethod
-from queue_adt import CircularQueue, Queue
+from queue_adt import CircularQueue
 from stack_adt import ArrayStack
 
 class Fighter(ABC):
-    # Initialised common values for the subclasses
-    experience = 0
-    damage = 0
-    life = 0 
 
     def __init__(self, life: int, experience: int):
         """ Initialise life and experience of the fighter in 
@@ -202,12 +198,14 @@ class Cavalry(Fighter):
         
         :returns: integer value for speed
         """
-        return 2
+        self.speed = 2
+        return self.speed
 
     def get_attack_damage(self):
         """Used to retrieve the attack damage for a class
         :returns: damage scaled to unit experience """
-        return (2*self.experience) + 1 
+        self.attack = (2*self.experience) + 1 
+        return self.attack
 
     def defend(self, damage: int):
         if damage>(self.experience)//2:
@@ -252,21 +250,21 @@ class Army(Soldier, Archer, Cavalry, ABC):
             
             index = 0
             while index != sold:
-                force.push(s.__str__())
+                force.push(s)
                 index+=1  
             
             index = 0
             while index != arch:
-                force.push(a.__str__())
+                force.push(a)
                 index+=1
             
             index = 0       
             while index != cav:
-                force.push(c.__str__())
+                force.push(c)
                 index+=1
             self.force = force
             self.name = name
-        elif formation == 1:
+        else: 
             queue_size = sold +arch +cav
             force = CircularQueue(queue_size)
 
@@ -276,16 +274,16 @@ class Army(Soldier, Archer, Cavalry, ABC):
             
             index = 0
             while index != sold:
-                force.append(str(s))
+                force.append(s)
                 index+=1
             index = 0
             while index != arch:
-                force.append(str(a))
+                force.append(a)
                 index+=1
             
             index = 0
             while index != cav:
-                force.append(str(c))
+                force.append(c)
                 index+=1
             self.force = force
             self.name =  name
@@ -332,13 +330,13 @@ class Army(Soldier, Archer, Cavalry, ABC):
 
 
 
-def main():
-    pass
-    # Army.choose_army(Army, "Player 1", 0)
-    #testing speed
+# def main():
+#     # pass
+#     # Army.choose_army(Army, "Player 1", 0)
+#     #testing speed
 
-    # s1 = Soldier()
-    # print(s1.get_attack_damage())
+#     s1 = Soldier()
+#     print(s1.get_attack_damage())
     # s2 = Archer()
     # print(s2.get_attack_damage())
     # s3 = Cavalry()
@@ -376,9 +374,17 @@ class Test(ABC):
     def test_function(self):
         sys.stdin = open("tester.txt")
         t1 = Army()
-        # Army.choose_army(Army, "", 0)
-        t1.choose_army("t1",0)
-        print(str(t1.name))
+        t1.choose_army("t1",1)
+        t2 = Army()
+        t2.choose_army("t2",0)
+        # print(len(t2.force))
+        u1 = t1.force.serve()
+        u2 = t2.force.pop()
+        print(u1)
+        # print(u1.get_attack_damage())
+        # print(u2.get_speed())
+
+
     def setup_method(self):
         self.orig_stdin = sys.stdin
 
@@ -386,7 +392,6 @@ class Test(ABC):
         sys.stdin = self.orig_stdin
 
 if __name__ == "__main__":
-    main()
 
     Test.test_function(Army)
 
