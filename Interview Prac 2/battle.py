@@ -54,7 +54,6 @@ class Battle():
             # if one of them is dead then the surviving one gets experience
                 if u1.is_alive() and not u2.is_alive():
                     u1.gain_experience(1)
-                    print(u1)
                     army1.force.push(u1)
             # vice versa
                 elif not u1.is_alive() and u2.is_alive():
@@ -64,43 +63,27 @@ class Battle():
             # if both are alive after the fight
                 elif u1.is_alive() and u2.is_alive():
                     u1.gain_experience(1)
+                    print(u1)
                     u2.gain_experience(1)
+                    print(u2)
                     army1.force.push(u1)
                     army2.force.push(u2)
 
             # if at least one of the armies are empty then end the code
                 if army1.force.is_empty() or army2.force.is_empty():
                     if army1.force.is_empty():
-                        Battle.get_winner(army2.name)
+                        ret = (f"Player {army1.name} won!")
+                        print(ret)
                         break
                     else:
-                        Battle.get_winner(army2.name)
+                        ret = (f"Player {army2.name} won!")
+                        print(ret)
                         break
-
                 elif army1.force.is_empty() and army2.force.is_empty():
-                    ret ="draw"
-                    print(ret)
-                    break
-    def get_winner(self):
-        return str(self.winner)
-        
-    def __str__(self) -> str:
-        Val = "The winner is "+str(self.get_winner())
-        return Val  
-# print(str(Battle.gladiatorial_combat(Battle, "", "")))  
-                  
+                    print("draw")
+                
 
-import sys            
-class Test(ABC):
-    def test_function(self):
-        sys.stdin = open("tester.txt")
-        print(str(Battle.gladiatorial_combat(Battle, "", "")))  
+(Battle.gladiatorial_combat(Battle, "", ""))                      
 
-    def setup_method(self):
-        self.orig_stdin = sys.stdin
-
-    def teardown_method(self):
-        sys.stdin = self.orig_stdin
-
-if __name__ == "__main__":
-    Test.test_function(Army)
+               
+ 
