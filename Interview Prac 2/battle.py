@@ -18,14 +18,17 @@ class Battle():
 
         self.__conduct_combat(self,player_one_army,player_two_army,0)
 
-        # print("\nplayer 1 = "+self.player_one)
-        # print("player 2 = "+self.player_two)
    
 
 
        
 
     def __conduct_combat(self, army1: Army, army2: Army, formation: int):
+
+        if formation == 0:
+           U1 = army1.pop()
+           U2 = army2.pop()
+           
         print("\nplayer 1 = "+self.player_one)
         print("player 2 = "+self.player_two)
 

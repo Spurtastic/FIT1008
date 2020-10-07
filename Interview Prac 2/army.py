@@ -321,9 +321,9 @@ class Army(Soldier, Archer, Cavalry, ABC):
         Cavalries = SAC[2]
         # print("work god dammit")
         
-        if self.__correct_army_given(self,Soldiers, Archers, Cavalries) is True:
+        if self.__correct_army_given(Soldiers, Archers, Cavalries) is True:
             # print("work god dammit")
-            self.__assign_army(self, self.name, Soldiers, Archers, Cavalries, formation)
+            self.__assign_army( self.name, Soldiers, Archers, Cavalries, formation)
             # print(self.force)
 
     
@@ -370,25 +370,25 @@ def main():
 
     # s3 = Cavalry()
     # print(str(s3))
-# import sys
+import sys
 
-# class Test(ABC):
-#     def test_function(self):
-#         sys.stdin = open("tester.txt")
-#         t1 = Army
-#         # Army.choose_army(Army, "", 0)
-#         t1.choose_army(t1,"t1",0)
-#         print(str(t1.name))
-#     def setup_method(self):
-#         self.orig_stdin = sys.stdin
+class Test(ABC):
+    def test_function(self):
+        sys.stdin = open("tester.txt")
+        t1 = Army()
+        # Army.choose_army(Army, "", 0)
+        t1.choose_army("t1",0)
+        print(str(t1.name))
+    def setup_method(self):
+        self.orig_stdin = sys.stdin
 
-#     def teardown_method(self):
-#         sys.stdin = self.orig_stdin
+    def teardown_method(self):
+        sys.stdin = self.orig_stdin
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
 
-#     Test.test_function(Army)
+    Test.test_function(Army)
 
 
 
