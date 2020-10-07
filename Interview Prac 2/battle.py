@@ -24,6 +24,15 @@ class Battle():
 
     def __conduct_combat(self, army1: Army, army2: Army, formation: int):
         if formation == 0:
+
+            # if at least one of the armies are empty then end the code
+            if army1.force.is_empty() or army2.force.is_empty():
+                if army1.force.is_empty() and not army2.force.is_empty():
+                    return 2
+                elif army2.force.is_empty() and not army1.force.is_empty():
+                    return 1
+            elif army1.force.is_empty() and army2.force.is_empty():
+                return 0
             
             # while the armies are not empty
             while not (army1.force.is_empty() & army2.force.is_empty()):      
@@ -57,37 +66,17 @@ class Battle():
             # if both are alive after the fight
                 elif u1.is_alive() and u2.is_alive():
                     u1.gain_experience(1)
-                    print(u1)
                     u2.gain_experience(1)
-                    print(u2)
+                
                     army1.force.push(u1)
                     army2.force.push(u2)
+            
 
-            # if at least one of the armies are empty then end the code
-                if army1.force.is_empty() or army2.force.is_empty():
-                    if army1.force.is_empty():
-                        ret = (f"Player {army1.name} won!")
-                        return 1
-                    else:
-                        ret = (f"Player {army2.name} won!")
-                        print(ret)
-                        return 2
-                elif army1.force.is_empty() and army2.force.is_empty():
-                    return 0
+            
                 
 def main():
-    t1 = Army()
-    t2 = Army()
-    battle = Battle()
-    formation = 0
-
-    # Test if combat is conducted correctly and returns appropriate result for empty p1 army and all Archer p2 army
-    # Assumes __assign_army is working correctly
-    print(t1._Army__assign_army("", 0, 0, 0, formation))
-    t2._Army__assign_army("", 0, 10, 0, formation)
-
+    pass
 if __name__ == "__main__":
-
     main()
                
  

@@ -234,10 +234,7 @@ class Army(Soldier, Archer, Cavalry, ABC):
             return False
          
     
-    def __assign_army(self, name:str, sold: int, arch: int, cav:int, formation: int):
-        # NOTE: this is based on the assesment assumption that the formation would always be 0 for a stack and not 1 which is meant for a queue
-        # print("work god dammit")
-              
+    def __assign_army(self, name:str, sold: int, arch: int, cav:int, formation: int):      
 
         if formation == 0:
             stack_size = sold + arch + cav
@@ -291,14 +288,11 @@ class Army(Soldier, Archer, Cavalry, ABC):
 
 
 
-
-
-
     def choose_army(self, name:str, formation:int):
         """
         docstring
         """ 
-        self.name = name # or it could just be name, it just depends on how its going to be used, will debate this later
+        self.name = name 
         x = 1
         SAC = []
         while x<4:
@@ -318,80 +312,12 @@ class Army(Soldier, Archer, Cavalry, ABC):
         Cavalries = SAC[2]
         
         if self.__correct_army_given(Soldiers, Archers, Cavalries) is True:
-            # print("work god dammit")
             self.__assign_army( self.name, Soldiers, Archers, Cavalries, formation)
-            # print(self.force)
-
+            
     
     def __str__(self) -> str:
         return str(self.force)
 
-
-
-# def main():
-#     # pass
-#     # Army.choose_army(Army, "Player 1", 0)
-#     #testing speed
-
-#     s1 = Soldier()
-#     print(s1.get_attack_damage())
-    # s2 = Archer()
-    # print(s2.get_attack_damage())
-    # s3 = Cavalry()
-    # print(s3.get_attack_damage())
-
-    # print(type(s3.cost))
-
-    # s1 = Soldier()
-    # print(s1.get_life())
-    # s2 = Archer()
-    # print(s2.get_life())
-    # s3 = Cavalry()
-    # print(s3.get_life())
-    
-    # s1 = Soldier()
-    # print(s1.get_experience())
-    # s2 = Archer()
-    # print(s2.get_experience())
-    # s3 = Cavalry()
-    
-    
-    # s1 = Soldier()
-    # s1.defend(1)
-    # print(s1.get_life())
-    # print(str(s1))
-    
-    # s2 = Archer()
-    # print(str(s2))
-
-    # s3 = Cavalry()
-    # print(str(s3))
-import sys
-
-class Test(ABC):
-    def test_function(self):
-        sys.stdin = open("tester.txt")
-        t1 = Army()
-        t1.choose_army("t1",1)
-        t2 = Army()
-        t2.choose_army("t2",0)
-        # print(len(t2.force))
-        u1 = t1.force.serve()
-        u2 = t2.force.pop()
-        print(u1)
-        # print(u1.get_attack_damage())
-        # print(u2.get_speed())
-
-
-    def setup_method(self):
-        self.orig_stdin = sys.stdin
-
-    def teardown_method(self):
-        sys.stdin = self.orig_stdin
-
-if __name__ == "__main__":
-
-    Test.test_function(Army)
 
 
 
