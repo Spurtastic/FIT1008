@@ -43,6 +43,17 @@ class TestTask3(unittest.TestCase):
             self.verificationErrors.append(str(e))
 
         # put your __str__ tests here
+        t1._Army__assign_army("t1", 2, 1, 4, 0)
+        try:
+            self.assertEqual(str(t1.force), sold + "," + sold + "," + arch + "," + cav + "," + cav + "," + cav + "," + cav, msg="String test 2,1,4")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
+
+        t1._Army__assign_army("t1", 0, 0, 0, 0)
+        try:
+            self.assertEqual(str(t1.force),"", msg="Empty stack test")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TestTask3)

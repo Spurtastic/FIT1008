@@ -41,30 +41,18 @@ class TestTask2(unittest.TestCase):
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
-        ## put init tests here 
-        "=================Soldier's Life===============" 
+        ## put init tests here
+        "============ Speed check================"
         try:
-            self.assertEqual(t1.life,2, msg = "Soldier can only have 3 starting life")
+            self.assertEqual(t1.get_speed(), 1, msg="Speed not initialised the right way")
         except AssertionError as e:
-            self.verificationErrors.append(str(e)) 
+            self.verificationErrors.append(str(e))
+        "============ Attack check================"
+        try:
+            self.assertEqual(t1.get_attack_damage(), 1, msg="Damage not initialised the right way")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
 
-        try:
-            self.assertEqual(t1.life,-1, msg = "Soldier can only have 3 starting life")
-        except AssertionError as e:
-            self.verificationErrors.append(str(e))  
-
-         
-        "=================Soldier's Experience===============" 
-        try:
-            self.assertEqual(t1.experience,-1, msg = "Soldier can only have 0 starting experience")
-        except AssertionError as e:
-            self.verificationErrors.append(str(e))   
-
-        try:
-            self.assertEqual(t1.experience,0, msg = "Soldier can only have 0 starting experience")
-        except AssertionError as e:
-            self.verificationErrors.append(str(e))       
-        
 
     def test_archer(self):
         t1 = Archer()
@@ -76,38 +64,16 @@ class TestTask2(unittest.TestCase):
             self.verificationErrors.append(str(e))
 
         ## put init tests here
-        "=================Archer's Life===============" 
-
+        "============ Speed check================"
         try:
-            self.assertEqual(t1.life,2, msg = "Archer can only have 3 starting life")
+            self.assertEqual(t1.get_speed(), 3, msg="Speed not initialised the right way")
         except AssertionError as e:
-            self.verificationErrors.append(str(e)) 
-
+            self.verificationErrors.append(str(e))
+        "============ Attack check================"
         try:
-            self.assertEqual(t1.life,3, msg = "Archer can only have 3 starting life")
+            self.assertEqual(t1.get_attack_damage(), 1, msg="Damage not initialised the right way")
         except AssertionError as e:
-            self.verificationErrors.append(str(e)) 
-
-        try:
-            self.assertEqual(t1.life,-1, msg = "Archer can only have 3 starting life")
-        except AssertionError as e:
-            self.verificationErrors.append(str(e))   
-        "=================Archer's Experience=========" 
-        
-        try:
-            self.assertEqual(t1.experience,-1, msg = "Archer can only have 0 starting experience")
-        except AssertionError as e:
-            self.verificationErrors.append(str(e))   
-        
-        try:
-            self.assertEqual(t1.experience,0, msg = "Archer can only have 0 starting experience")
-        except AssertionError as e:
-            self.verificationErrors.append(str(e))   
-        
-        try:
-            self.assertEqual(t1.experience,3, msg = "Archer can only have 0 starting experience")
-        except AssertionError as e:
-            self.verificationErrors.append(str(e))   
+            self.verificationErrors.append(str(e))
 
     def test_cavalry(self):
         t1 = Cavalry()
@@ -118,108 +84,118 @@ class TestTask2(unittest.TestCase):
         except AssertionError as e:
             self.verificationErrors.append(str(e))
 
-        ## put init tests here
+        # put init tests here
+        "============ Speed check================"
+        try:
+            self.assertEqual(t1.get_speed(), 2, msg="Speed not initialised the right way")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
+        "============ Attack check================"
+        try:
+            self.assertEqual(t1.get_attack_damage(), 1, msg="Damage not initialised the right way")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
 
-    # def test_is_alive_lose_life(self):
-    #     s = Soldier()
-    #     # Test if Soldier created alive
-    #     try:
-    #         self.assertTrue(s.is_alive(), msg = "Soldier not created alive")
-    #     except AssertionError as e:
-    #         self.verificationErrors.append(str(e))
+    def test_is_alive_lose_life(self):
+        s = Soldier()
+        # Test if Soldier created alive
+        try:
+            self.assertTrue(s.is_alive(), msg = "Soldier not created alive")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
 
-    #     # Test if Soldier stays alive after losing only a small amount of life
-    #     s.lose_life(1)
-    #     try:
-    #         self.assertTrue(s.is_alive(), msg = "Soldier lost too much life")
-    #     except AssertionError as e:
-    #         self.verificationErrors.append(str(e))
+        # Test if Soldier stays alive after losing only a small amount of life
+        s.lose_life(1)
+        try:
+            self.assertTrue(s.is_alive(), msg = "Soldier lost too much life")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
 
-    #     a = Archer()
-    #     # Test if Archer created alive
-    #     try:
-    #         self.assertTrue(a.is_alive(), msg = "Archer not created alive")
-    #     except AssertionError as e:
-    #         self.verificationErrors.append(str(e))
+        a = Archer()
+        # Test if Archer created alive
+        try:
+            self.assertTrue(a.is_alive(), msg = "Archer not created alive")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
 
-    #     # Test if Archer stays alive after losing only a small amount of life
-    #     a.lose_life(1)
-    #     try:
-    #       self.assertTrue(a.is_alive(), msg = "Archer lost too much life")
-    #     except AssertionError as e:
-    #       self.verificationErrors.append(str(e))
+        # Test if Archer stays alive after losing only a small amount of life
+        a.lose_life(1)
+        try:
+          self.assertTrue(a.is_alive(), msg = "Archer lost too much life")
+        except AssertionError as e:
+          self.verificationErrors.append(str(e))
 
-    #     c = Cavalry()
-    #     # Test if Cavalry created alive
-    #     try:
-    #         self.assertTrue(c.is_alive(), msg = "Cavalry not created alive")
-    #     except AssertionError as e:
-    #        self.verificationErrors.append(str(e))
+        c = Cavalry()
+        # Test if Cavalry created alive
+        try:
+            self.assertTrue(c.is_alive(), msg = "Cavalry not created alive")
+        except AssertionError as e:
+           self.verificationErrors.append(str(e))
 
-    #     # Test if Cavalry stays alive after losing only a small amount of life
-    #     c.lose_life(1)
-    #     try:
-    #         self.assertTrue(c.is_alive(), msg = "Cavalry lost too much life")
-    #     except AssertionError as e:
-    #         self.verificationErrors.append(str(e))
+        # Test if Cavalry stays alive after losing only a small amount of life
+        c.lose_life(1)
+        try:
+            self.assertTrue(c.is_alive(), msg = "Cavalry lost too much life")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
 
-    # def test_gain_experience_get_experience(self):
-    #     s = Soldier()
+    def test_gain_experience_get_experience(self):
+        s = Soldier()
 
-    #     # Test if Soldier experience gain is updated correctly
-    #     s.gain_experience(3)
-    #     try:
-    #         self.assertTrue(s.get_experience()==3, msg = "Soldier's experience incorrect")
-    #     except AssertionError as e:
-    #         self.verificationErrors.append(str(e))
+        # Test if Soldier experience gain is updated correctly
+        s.gain_experience(3)
+        try:
+            self.assertTrue(s.get_experience()==3, msg = "Soldier's experience incorrect")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
 
-    #     # Test if speed is updated correctly for Soldier upon gaining experience
-    #     try:
-    #         self.assertTrue(s.get_speed() == 4, msg = "Soldier's speed not correct"+str(s))
-    #     except AssertionError as e:
-    #         self.verificationErrors.append(str(e))
+        # Test if speed is updated correctly for Soldier upon gaining experience
+        try:
+            self.assertTrue(s.get_speed() == 4, msg = "Soldier's speed not correct"+str(s))
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
 
-    #     # Test if pre-condition is enforced correctly (negative experience gain raises exception)
-    #     with self.assertRaises(Exception,msg = "Soldier's gain_experience should have raised exception"):
-    #         s.gain_experience(-3)
+        # Test if pre-condition is enforced correctly (negative experience gain raises exception)
+        with self.assertRaises(Exception,msg = "Soldier's gain_experience should have raised exception"):
+            s.gain_experience(-3)
 
-    #     a = Archer()
+        a = Archer()
 
-    #     # Test if Archer experience gain is updated correctly
-    #     a.gain_experience(3)
-    #     try:
-    #         self.assertTrue(a.get_experience()==3, msg = "Archer's experience incorrect")
-    #     except AssertionError as e:
-    #         self.verificationErrors.append(str(e))
+        # Test if Archer experience gain is updated correctly
+        a.gain_experience(3)
+        try:
+            self.assertTrue(a.get_experience()==3, msg = "Archer's experience incorrect")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
 
-    #     # Test if speed is updated correctly for Archer upon gaining experience
-    #     try:
-    #         self.assertTrue(a.get_speed() == 3, msg = "Archer's speed not correct")
-    #     except AssertionError as e:
-    #         self.verificationErrors.append(str(e))
+        # Test if speed is updated correctly for Archer upon gaining experience
+        try:
+            self.assertTrue(a.get_speed() == 3, msg = "Archer's speed not correct")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
 
-    #     # Test if pre-condition is enforced correctly (negative experience gain raises exception)
-    #     with self.assertRaises(Exception,msg = "Archer's gain_experience should have raised exception"):
-    #         a.gain_experience(-3)
+        # Test if pre-condition is enforced correctly (negative experience gain raises exception)
+        with self.assertRaises(Exception,msg = "Archer's gain_experience should have raised exception"):
+            a.gain_experience(-3)
 
-    #     c = Cavalry()
+        c = Cavalry()
 
-    #     # Test if Archer experience gain is updated correctly
-    #     c.gain_experience(3)
-    #     try:
-    #         self.assertTrue(c.get_experience()==3, msg = "Cavalry's experience incorrect")
-    #     except AssertionError as e:
-    #         self.verificationErrors.append(str(e))
+        # Test if Archer experience gain is updated correctly
+        c.gain_experience(3)
+        try:
+            self.assertTrue(c.get_experience()==3, msg = "Cavalry's experience incorrect")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
 
-    #     # Test if speed is updated correctly for Archer upon gaining experience
-    #     try:
-    #         self.assertTrue(c.get_speed() == 2, msg = "Cavalry's speed not correct")
-    #     except AssertionError as e:
-    #         self.verificationErrors.append(str(e))
+        # Test if speed is updated correctly for Archer upon gaining experience
+        try:
+            self.assertTrue(c.get_speed() == 2, msg = "Cavalry's speed not correct")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
 
-    #     # Test if pre-condition is enforced correctly (negative experience gain raises exception)
-    #     with self.assertRaises(Exception,msg = "Cavalry's gain_experience should have raised exception"):
-    #         c.gain_experience(-3)
+        # Test if pre-condition is enforced correctly (negative experience gain raises exception)
+        with self.assertRaises(Exception,msg = "Cavalry's gain_experience should have raised exception"):
+            c.gain_experience(-3)
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TestTask2)

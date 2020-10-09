@@ -24,7 +24,7 @@ class TestTask4(unittest.TestCase):
         t1 = Army()
         t2 = Army()
         battle = Battle()
-        formation = 0
+        formation = 0 
 
         # Test if combat is conducted correctly and returns appropriate result for empty p1 army and all Archer p2 army
         # Assumes __assign_army is working correctly
@@ -36,7 +36,24 @@ class TestTask4(unittest.TestCase):
             self.verificationErrors.append(str(e))
 
         # your tests for __conduct_combat go here
+        t1._Army__assign_army("", 1, 0, 0, formation)
 
+        t2._Army__assign_army("", 0, 1, 0, formation)
+        battle._Battle__conduct_combat(t1, t2, formation)
+
+        try:
+            self.assertTrue(battle._Battle__conduct_combat(t1, t2, formation) == 0, "Gladiatorial 1,0,0 0,1,0 failed")
+            self.assertEqual(str(t2.force), "Archer's life = 1 and experience = 1", msg="String test 1,1,1 failed")
+
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
+
+        t1._Army__assign_army("", 7, 4, 3, formation)
+        t2._Army__assign_army("", 8, 5, 3, formation)
+        try:
+            self.assertTrue(battle._Battle__conduct_combat(t1, t2, formation) == 2, "Gladiatorial 7,4,5,8,5,3failed")
+        except AssertionError as e:
+            self.verificationErrors.append(str(e))
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TestTask4)
