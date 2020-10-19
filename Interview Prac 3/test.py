@@ -9,6 +9,8 @@ class Coding:
         for i in range(x):
             x-= 1
     def getx(self, x :int) -> int:
+        for i in range(23):
+            x = i
         return x
     def __str__(self) -> str:
         """just for the classes description"""
