@@ -1,3 +1,3 @@
-coverage run coding.py
+coverage run test.py
 coverage report -m
 coverage html 
