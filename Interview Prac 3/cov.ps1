@@ -1,6 +1,6 @@
-coverage run test.py
-coverage report -m
-coverage html 
+# coverage run dictionary.py
+# coverage report -m
+# coverage html 
 
 git add -A
 git commit -m "continuous testing view"
