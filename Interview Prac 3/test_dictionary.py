@@ -44,13 +44,52 @@ class TestDictionary(unittest.TestCase):
 
         # TODO: Add your own test cases (consider testing exceptions being raised)
 
+        # testing if the number of words in the file is equivalent to the number of lines in the file
+        number_of_words = self.dictionary.load_dictionary("words.txt")
+        number_of_lines = file_len("words.txt")
+        self.assertEqual(number_of_words, number_of_lines, "words in the file must be equal to the lines in the file")
+
+        # testing the time out error
+        res =""
+        self.dictionary = Dictionary(1, 25027)
+        try:
+
+            self.dictionary.load_dictionary("english_small.txt", 5)
+        except TimeoutError:
+            # print("error happened moving on")
+            res = "Error function ran longer than limit"
+
+        self.assertEqual(res, "Error function ran longer than limit", "time limit exceeded but function kept going" )
+
     def test_add_word(self) -> None:
         """ Testing the ability to add words """
         # TODO: Add your own test cases
 
+        # asserting true for known values in  french.txt
+
     def test_find_word(self) -> None:
         """ Ensuring both valid and invalid words """
         # TODO: Add your own test cases
+        # for false assertions with respect to non existing words in the dictionary
+        self.assertFalse(self.dictionary.find_word("hello"), "error in find_word returning True when it should not")
+
+        # trying for errors concerning case sensitive addition of strings
+        msg = ""
+        try:
+            self.dictionary.add_word("yerk")
+            self.assertFalse(self.dictionary.find_word("Yerk"), "expected error, fncn should return True")
+        except AssertionError:
+            msg = "Error as expected, if the string is upper case or lower case the find_word will always return true"
+            return msg
+
+        self.assertEqual(msg, "Error as expected, if the string is upper case or lower case the find_word will always return true", "error function is returning False")
+
+        # For true assertions for when a word is added to the dictionary.
+        self.dictionary.add_word("word")
+        self.assertTrue(self.dictionary.find_word("word"), "error in find_word, its returning False when it should not")
+
+        self.dictionary.add_word("$%#:#")
+        self.assertTrue(self.dictionary.find_word("$%#:#"), "error in find_word, its returning False when it should not")
 
     def test_delete_word(self) -> None:
         """ Deleting valid words and ensuring we can't delete invalid words """

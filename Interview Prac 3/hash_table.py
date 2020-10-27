@@ -50,8 +50,17 @@ class LinearProbeHashTable(Generic[T]):
         self.hash_base = hash_base
         self.next_prime = 0
 
+        # additional vars
+        self.collision_count = 0
+        self.probe_total = 0
+        self.probe_max = 0
+        self.rehash_count = 0
+
         while LinearProbeHashTable.PRIMES[self.next_prime] <= table_size:
             self.next_prime += 1
+
+    def statistics(self) -> tuple:
+        return self.collision_count, self.probe_max, self.probe_total, self.rehash_count
 
     def __len__(self) -> int:
         """
