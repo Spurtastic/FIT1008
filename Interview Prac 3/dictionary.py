@@ -24,7 +24,7 @@ class Statistics:
             words = init_table.load_dictionary(filename, max_time)
             time = (timeit.default_timer() - start_time)
             (collision_count, probe_total, probe_max, rehash_count) = init_table.hash_table.statistics()
-            return words, time, collision_count, probe_total, probe_max, rehash_count
+            return words, collision_count, probe_total, probe_max, rehash_count, time
 
         # basically when the function cant read all the lines within the stipulated time, the stated time is assigned
         except TimeoutError:
@@ -33,17 +33,20 @@ class Statistics:
             words = init_table.count
             time = max_time
             (collision_count, probe_total, probe_max, rehash_count) = init_table.hash_table.statistics()
-            return words, time, collision_count, probe_total, probe_max, rehash_count
+            return words, collision_count, probe_total, probe_max, rehash_count, time
 
-    def table_load_statistics(self, max_time:int)->None:
-       pass
-
-
-
-
-
-    
-
+    def table_load_statistics(self, max_time: int) -> None:
+        b = [1, 27183, 25026]
+        table_size = [ 25027, 40221, 1000081]
+        filename = ["english_large.txt", "english_small.txt", "french.txt"]
+        combos = [(base, t, f) for base in b for t in table_size for f in filename]
+        file = open("output_task2.csv", "w")
+        file.write('Name'+','+'Table Size'+','+'Base'+','+'Number of Words'+','+'Collision Count'+','+'Probe_total'+','+'Probe_max'+','+'Rehash Count'+','+'Time Taken'+"\n")
+        for base ,t ,f in combos:
+            stats = self.load_statistics(self, base, t, f, max_time)
+                    # Name   tblesize   base           words            collision count    probe total       rehash count      time taken       time taken
+            file.write(f+","+str(t)+","+str(base)+","+str(stats[0])+","+str(stats[1])+","+str(stats[2])+","+str(stats[3])+","+str(stats[4])+","+str(stats[5])+"\n")
+        file.close()
 
 class Dictionary:
     # returns None
@@ -69,7 +72,7 @@ class Dictionary:
                         raise TimeoutError
 
         else:
-            with open(filename, 'r') as file:
+            with open(filename, 'r', encoding='UTF-8') as file:
                 for item in file:
                     self.add_word(item.rstrip("\n").lower())
                     self.count+=1
@@ -115,7 +118,11 @@ class Dictionary:
             elif input_recieved == 2:
                 res = str(input("Which word would you like to delete? \n"))
                 self.delete_word(res)
-                print(f"{res} is now deleted from the Hash")
+                if self.find_word(res):
+                    print(f"{res} is now deleted from the Hash")
+                else:
+                    print(f"{res} is not in the Hash try inputting it into the hash")
+
 
             elif input_recieved == 3:
                 res = str(input("Which word are you looking for? \n"))
@@ -144,7 +151,9 @@ if __name__ == '__main__':
     # dict = Dictionary(31, 250727)
     # (dict.load_dictionary("english_large.txt",10))
     # print(dict.count)
-    stat = Statistics.load_statistics(Statistics, 31, 250727, "french.txt", 1)
+    # stat = Statistics.load_statistics(Statistics, 31, 250727, "french.txt", 1)
+    # print(stat)
+    stat = Statistics.table_load_statistics(Statistics, 10)
     print(stat)
 
 

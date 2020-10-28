@@ -98,6 +98,7 @@ class LinearProbeHashTable(Generic[T]):
         """
         new_hash = LinearProbeHashTable(self.hash_base, LinearProbeHashTable.PRIMES[self.next_prime])
         self.next_prime += 1
+        self.rehash_count +=1
 
         for i in range(len(self.table)):
             if self.table[i] is not None:
@@ -116,6 +117,8 @@ class LinearProbeHashTable(Generic[T]):
         :raises KeyError: When a position can't be found
         """
         position = self.hash(key)  # get the position using hash
+        max = 0
+        collision_point = 0
 
         if is_insert and self.is_full():
             raise KeyError(key)
@@ -129,7 +132,14 @@ class LinearProbeHashTable(Generic[T]):
             elif self.table[position][0] == key:  # found key
                 return position
             else:  # there is something but not the key, try next
+                if collision_point == 0:
+                    self.collision_count += 1
+                    collision_point = 0
                 position = (position + 1) % len(self.table)
+                max += 1
+                self.probe_total += 1
+                if self.probe_max < max:
+                    self.probe_max = max
 
         raise KeyError(key)
 
