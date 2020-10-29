@@ -4,7 +4,8 @@ import timeit
 
 
 class Statistics:
-    """Class contains the ability to load the data collected from running dictionary as well as loading the statistical data"""
+    """Class contains the ability to load the data collected from running dictionary
+    """
 
     def load_statistics(self, hash_base: int, table_size: int, filename: str, max_time) -> tuple:
         """
@@ -13,7 +14,7 @@ class Statistics:
         :param table_size:
         :param filename:
         :param max_time:
-        :return:
+        :return: tuple of items concerning the number of collisions, total probes into the dictionary, max number of probes as well as the rehash
         """
 
         # the hash table is first initialised
@@ -36,6 +37,11 @@ class Statistics:
             return words, collision_count, probe_total, probe_max, rehash_count, time
 
     def table_load_statistics(self, max_time: int) -> None:
+        """
+        3*3*3 combinations of filenames, hash bases and table sizes for good coverage of hash statistics
+        :param max_time:
+        :return: None
+        """
         b = [1, 27183, 25026]
         table_size = [ 25027, 40221, 1000081]
         filename = ["english_large.txt", "english_small.txt", "french.txt"]
@@ -47,6 +53,7 @@ class Statistics:
                     # Name   tblesize   base           words            collision count    probe total       rehash count      time taken       time taken
             file.write(f+","+str(t)+","+str(base)+","+str(stats[0])+","+str(stats[1])+","+str(stats[2])+","+str(stats[3])+","+str(stats[4])+","+str(stats[5])+"\n")
         file.close()
+
 
 class Dictionary:
     # returns None
