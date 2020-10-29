@@ -178,6 +178,9 @@ class LinearProbeHashTable(Generic[T]):
             self.count += 1
         self.table[position] = (key, data)
 
+    def get_table(self):
+        return self.table
+
     def is_empty(self):
         """
         Returns whether the hash table is empty

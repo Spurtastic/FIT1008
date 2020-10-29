@@ -1,10 +1,10 @@
-hithere
-belo
-maggot
-eazyE
-tree
-dead
-man
+hithere,
+belo,
+maggot,
+eazyE,
+tree,
+dead":><?>
+man<>?:'/.,][|\
 wuuut
 yesno
 hithere

@@ -33,6 +33,32 @@ class TestDictionary(unittest.TestCase):
         self.assertEqual(type(self.dictionary.hash_table), LinearProbeHashTable)
         self.assertEqual(len(self.dictionary.hash_table), 0)
 
+    def test_load_dictionary_statistics(self) -> None:
+        """ For each file, doing some basic testing on the statistics generated """
+        statistics = Statistics()
+        for filename in TestDictionary.FILENAMES:
+            words, time, collision_count, probe_total, probe_max, rehash_count = statistics.load_statistics(
+                TestDictionary.DEFAULT_HASH_BASE, TestDictionary.DEFAULT_TABLE_SIZE * 2, filename,
+                TestDictionary.DEFAULT_TIMEOUT)
+            self.assertGreater(words, 0)
+            self.assertLess(time, TestDictionary.DEFAULT_TIMEOUT)
+            # TODO: Add your own test cases here
+            words, time, collision_count, probe_total, probe_max, rehash_count = statistics.load_statistics(
+                TestDictionary.DEFAULT_HASH_BASE, TestDictionary.DEFAULT_TABLE_SIZE * 2, filename,
+                TestDictionary.DEFAULT_TIMEOUT)
+            # collision_count
+            self.assertGreater(collision_count, 0, "collisions are not being counted")
+
+            # probe_total
+            self.assertGreater(probe_total, 0, "total probes are incorrect")
+
+            # probe_max
+            self.assertGreater(probe_max, 0, "probes_max values are incorrect")
+
+            # rehash_count
+            self.assertGreater(rehash_count, 0, "rehashes are not being recorded")
+
+
     def test_load_dictionary(self) -> None:
         """ Reading a dictionary and ensuring the number of lines matches the number of words
             Also testing the various exceptions are raised correctly """
@@ -64,8 +90,10 @@ class TestDictionary(unittest.TestCase):
     def test_add_word(self) -> None:
         """ Testing the ability to add words """
         # TODO: Add your own test cases
+        self.dictionary.add_word("hello")
+        self.assertTrue(self.dictionary.find_word("hello"), "word not added correctly")
 
-        # asserting true for known values in  french.txt
+
 
     def test_find_word(self) -> None:
         """ Ensuring both valid and invalid words """
