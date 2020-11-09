@@ -60,22 +60,15 @@ def keep_open(algorithm, display, time):  # Keep the window open until sort comp
         check_events()
         pygame.display.update()
 
-
 def main():
     if len(sys.argv) < 2:
         print("Please select a sorting algorithm.")
     else:
         try:
             algorithm = algorithms[sys.argv[1]]  # Pass the algorithm selected
-            try:
-                time_elapsed = algorithm.run()[1]
-                keep_open(algorithm, display, time_elapsed)
-                pass
-            except:
-                pass
-        except:
-            print("Error.")
-
-
-if __name__ == "__main__":
-    main()
+            time_elapsed = algorithm.run()[1]
+            keep_open(algorithm, display, time_elapsed)
+        except ValueError:
+            print("hello")
+                
+main()

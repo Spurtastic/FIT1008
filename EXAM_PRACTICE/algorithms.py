@@ -1,4 +1,5 @@
 import random
+import time
 class Algorithm:
     def __init__(self, name):
         self.array = random.sample(range(512), 512)  # Random array of size 512
