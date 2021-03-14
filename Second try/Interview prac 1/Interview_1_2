@@ -1,0 +1,119 @@
+# Author: Ashwin Sarith 
+# Student ID: 29940478
+
+.data 
+
+	          output_string:  .asciiz "The pythogorean triples are "
+	                  space:  .asciiz " "
+			newline:  .asciiz "\n"
+		      integer_n:  .word 0
+		      integer_m:  .word 0
+	 input_string_integer_n:  .asciiz "Please enter integer n: "	 
+	 input_string_integer_m:  .asciiz "Please enter integer m: "		 
+.text
+
+	# integer1 = int(input("Please enter integer n "))
+	la $a0, input_string_integer_n
+	addi $v0, $0, 4
+	syscall 
+	
+	la $a0, newline
+	addi $v0, $0, 4
+	syscall
+	
+	# input value is taken and stored here
+	addi $v0, $0, 5			# 5 is in this case when stored to $v0 esssentially means that a number is going to be inputed
+	syscall
+	sw $v0, integer_n		# that number is then stored to a variable 
+	
+	# integer2 = int(input("Please enter the second integer: "))
+	la $a0, input_string_integer_m
+	addi $v0, $0, 4
+	syscall 
+	
+	la $a0, newline
+	addi $v0, $0, 4
+	syscall
+	
+	addi $v0, $0, 5
+	syscall
+	sw $v0, integer_m
+	
+	# the pythogorean triples are a b c 
+	
+	la $a0, output_string 			# first the out put string is placed to set the stage for the rest of the code
+	addi $v0, $0, 4
+	syscall 
+	
+	
+	# m2
+	lw $t0, integer_m 			# first m is loaded into $t0  
+	mult $t0, $t0 				# m is squared 
+	mflo $t0				# the value is then moved from the lo register to $t0 for later use
+
+	# n2
+	lw $t1, integer_n  			#the steps before are repeated here for integer n, value is squared and moved from the lo register to $t1 
+	mult $t1, $t1 
+	mflo $t1
+	
+	# a = m2-n2
+	sub $t3, $t0, $t1 			# here $t0(m) is subtracted with $t1(n) and the result is stored in $t3
+	la $a0, ($t3)				# the value is then loaded to the address 
+	addi $v0, $0, 1				# cakk sign for printing integers 
+	syscall 
+	
+	la $a0, space 				# a space is added inbetween each of the outputs
+	addi $v0, $0, 4
+	syscall
+	
+	# b = m2+n2
+	add $t3, $t0, $t1 			# the values are re used again but this time be added together
+	la $a0, ($t3) 				# address is loaded with the result of the addition 
+	addi $v0, $0, 1 			# once again the print integer call
+	syscall 
+	
+	la $a0, space
+	addi $v0, $0, 4
+	syscall
+	
+	# c = 2mn 
+	lw $t0, integer_m  			# since the values in $t0, and $t1 were over written, the variables m and n stored in their respective variables were recalled here
+	lw $t1, integer_n
+	mult $t0, $t1      			# m *n 
+	mflo $t3 	   			# the result is stored in $t3
+	addi $t4, $0, 2    			# getting 2 into $t4 via addi 		
+	mult $t3, $t4      			# 2*m*n
+	mflo $t3	   			# value is stored 
+	la $a0, ($t3)	   			# address has the contents of $t3 loaded
+	addi $v0, $0, 1    			# the integer is printed
+	syscall 
+	
+	# ** program terminated	
+	addi $v0, $0, 10
+	syscall 
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

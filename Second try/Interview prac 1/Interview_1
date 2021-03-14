@@ -1,0 +1,22 @@
+# Author: Ashwin Sarith 
+# ID: 29940478
+
+.data 
+
+	out_string:  .asciiz "I am really enjoying MIPS"
+	new_line:  .asciiz "\n"
+	
+
+.text
+
+	la $a0, out_string			# the string is loaded into the $a0
+	addi $v0, $0, 4				# here the command to output the string was used
+	syscall 				# to run the aforementioned line
+
+	la $a0, new_line			# the string is loaded into the $a0
+	addi $v0, $0, 4				# here the command to output the string was used
+	syscall 				# to run the aforementioned line
+	
+	addi $v0, $0, 10 			# to terminate the program
+	syscall 
+	
