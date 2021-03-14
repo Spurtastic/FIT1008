@@ -1,0 +1,27 @@
+.data 
+
+g: .word 123
+
+
+.text
+
+addi $fp, $sp, 0		#add the spinto the fp, to make  our  life easy
+addi $sp, $sp, -12 		#how you allocate the space you need for the stack
+
+
+# x = -5
+
+addi $t0, $0, -5
+sw $t0, -12($fp)
+sw $0, -8($fp)
+
+addi $t0, $0, 230 
+sw $t0, -4($fp)
+
+#y = g+x
+
+lw $t0, g 
+lw $t1, -12($fp)
+add $t2, $t0, $t1
+sw $t0, -8($fp)
+
