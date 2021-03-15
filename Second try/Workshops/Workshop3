@@ -1,0 +1,51 @@
+#if-then-else to guess a number.
+
+        .data
+secret: .word 42
+guess:  .word 0
+diff:   .word 0
+
+ask:    .asciiz "Enter guess: "
+high:   .asciiz "Too high"
+good:   .asciiz "Good guess!"
+low:    .asciiz "Too low"
+
+        .text
+
+        #guess = int(input("Enter guess: "))
+        #ask for guess 
+        addi $v0, 0, 4
+        la $a0, ask
+        syscall
+
+        #read int
+        addi $v0, $0, 5
+        syscall
+        sw $v0, guess
+
+        #diff = secret - guess
+        lw $t0, secret
+        lw $t1, guess
+        sub $t0, $t0, $t1
+        sw $t0, diff
+
+
+
+        #if diff < 0:
+        addi $t2, $0, 0
+        slt $
+
+        #print("Too high")
+
+elifdiff:
+        #elif diff == 0:
+
+        #print("Good guess!")
+
+elsediff: 
+        #print("Too low")
+
+endifguess:
+        #exit
+        addi $v0, $0, 10
+        syscall
