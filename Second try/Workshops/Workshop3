@@ -32,25 +32,29 @@ low:    .asciiz "Too low"
 
 
         #if diff < 0:
-        addi $t2, $0, 0
-        slt $t1, $t0, $t2
+        slt $t1, $t0, $0   # if t0 < 0 then t1 = 1 ,  else  t1 = 0 
         bne $t1, 0, elifdiff
         addi $v0, 0, 4
         la $a0, high 
         syscall
-
+	j endifguess
         #print("Too high")
 
 elifdiff:
         #elif diff == 0:
-        bne $t0, $t2, elsediff
-        
-
+        lw $t0, diff
+        bne $0, $t0, elsediff
+        addi $v0, $0, 4
+        la $a0, good
+        syscall 
+        j endifguess
         #print("Good guess!")
 
 elsediff: 
         #print("Too low")
-
+        addi $v0, $0, 4
+        la $a0, low
+        syscall
 endifguess:
         #exit
         addi $v0, $0, 10
